@@ -25,11 +25,14 @@ let weather = {
     }
 };
 
-document.querySelector(".search button").addEventListener("click", function () {
+let query_button = document.querySelector(".search button").addEventListener("click", function () {
     weather.search()
 });
-document.querySelector(".search-bar").addEventListener("keyup", function (event) {
+let query_enter = document.querySelector(".search-bar").addEventListener("keyup", function (event) {
     if (event.key == "Enter") {
         weather.search()
     }
 });
+if(query_button || query_enter) {
+weather.displayWeather(document.querySelector(".search-bar").value);
+}; 
