@@ -1,5 +1,5 @@
-let weather = {
-    apiKey: API_KEY,
+const weather = {
+    apiKey: process.env.API_KEY; ,
     fetchWeatherAPI: function (city) {
         fetch(
             "http://api.openweathermap.org/data/2.5/weather?q=" +
