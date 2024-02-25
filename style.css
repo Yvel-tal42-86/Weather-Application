@@ -5,8 +5,8 @@ body {
     align-items: center;
     height: 100vh; 
     width: 100%;
-    background-color: #0000005e;
-    background-image: url("https://source.unsplash.com/1800x900/?landscape");
+    background: #0000005e url("https://source.unsplash.com/1800x900/?landscape") no-repeat center;
+    background-size: cover;
     color: white;
     font-family: 'Open Sans', sans-serif;
     font-size: 120%;
