@@ -1,12 +1,22 @@
+import { MY_API_KEY } from "./config.js";
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': MY_API_KEY,
+		'X-RapidAPI-Host': 'weather-api99.p.rapidapi.com'
+	}
+};
+
+const searchbtn = document.querySelector("button");
+const searchbar = document.querySelector(".search-bar");
+
 const weather = {
-    apiKey: process.env.API_KEY; ,
     fetchWeatherAPI: function (city) {
-        fetch(
-            "http://api.openweathermap.org/data/2.5/weather?q=" +
-            city +
-            "&units=metric&appid=" +
-            this.apiKey
-        ).then((response) => response.json());
+        fetch("https://weather-api99.p.rapidapi.com/weather?city=" + city, options)
+        .then((response) => response.json())
+        .catch((err) => console.log(err));
+        searchbar.value = " ";
     },
     displayWeather: function (data) {
         const { name } = data;
@@ -21,18 +31,18 @@ const weather = {
         document.querySelector(".wind").innerText = "Wind-speed :" + speed + "km/h";
     },
     search: function () {
-        this.fetchWeatherAPI(document.querySelector(".search-bar").value);
+        this.fetchWeatherAPI(searchbar.value)
     }
 };
 
-let query_button = document.querySelector(".search button").addEventListener("click", function () {
-    weather.search()
-});
-let query_enter = document.querySelector(".search-bar").addEventListener("keyup", function (event) {
+
+let query_button = searchbtn.addEventListener('click', weather.search());
+let query_enter = searchbar.addEventListener('keyup', (event) => {
     if (event.key == "Enter") {
-        weather.search()
-    }
+    weather.search()
+    };
 });
+
 if(query_button || query_enter) {
-weather.displayWeather(document.querySelector(".search-bar").value);
-}; 
+weather.displayWeather(searchbar.value);
+}
