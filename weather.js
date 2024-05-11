@@ -27,9 +27,9 @@ const weather = {
         document.querySelector(".city").innerText = name;
         document.querySelector(".icon").src = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
         document.querySelector(".description").innerText = description;
-        document.querySelector(".temp").innerText = celsius + "°C";
+        document.querySelector(".temp").innerText = celsius.toFixed(2) + "°C";
         document.querySelector(".humidity").innerText = "Humidity : " + humidity + "%";
-        document.querySelector(".wind").innerText = "Wind-speed : " + speed + "mps";
+        document.querySelector(".wind").innerText = "Wind-speed : " + speed + "m/s";
     },
     search: function () {
         this.fetchWeatherAPI(searchbar.value.trim())
