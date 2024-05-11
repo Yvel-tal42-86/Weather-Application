@@ -13,7 +13,7 @@ const searchbar = document.querySelector(".search-bar");
 
 const weather = {
   fetchWeatherAPI: function (city) {
-        fetch(`https://weather-api99.p.rapidapi.com/weather?city=${city}`, options)
+        fetch(`https://weather-api99.p.rapidapi.com/weather?city=${city}&units=metric`, options)
         .then((response) => response.json())
         .then((data) => this.displayWeather(data))
         .catch((err) => console.log(err));
@@ -26,9 +26,9 @@ const weather = {
         document.querySelector(".city").innerText = name;
         document.querySelector(".icon").src = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
         document.querySelector(".description").innerText = description;
-        document.querySelector(".temp").innerText = (temp - 273.15) + "°C";
+        document.querySelector(".temp").innerText = temp + "°C";
         document.querySelector(".humidity").innerText = "Humidity :" + humidity + "%";
-        document.querySelector(".wind").innerText = "Wind-speed :" + speed + "km/h";
+        document.querySelector(".wind").innerText = "Wind-speed :" + speed + "m/s";
     },
     search: function () {
         this.fetchWeatherAPI(searchbar.value.trim())
