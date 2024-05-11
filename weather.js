@@ -13,7 +13,7 @@ const searchbar = document.querySelector(".search-bar");
 
 const weather = {
   fetchWeatherAPI: function (city) {
-        fetch(`https://weather-api99.p.rapidapi.com/weather?city=${city}&units=metric`, options)
+        fetch(`https://weather-api99.p.rapidapi.com/weather?city=${city}`, options)
         .then((response) => response.json())
         .then((data) => this.displayWeather(data))
         .catch((err) => console.log(err));
